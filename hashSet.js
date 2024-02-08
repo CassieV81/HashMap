@@ -123,21 +123,21 @@ set.add('React');
 set.add('Visual Studio Code');
 set.add('Windows');
 set.add('USA');
-set.add('Blue');
-set.add('Tesla Model 3');
-set.add('Classical');
-set.add('To Kill a Mockingbird');
-set.add('Inception');
-set.add('Soccer');
-set.add('Dog');
-set.add('Coffee');
-set.add('Chess');
+// set.add('Blue');
+// set.add('Tesla Model 3');
+// set.add('Classical');
+// set.add('To Kill a Mockingbird');
+// set.add('Inception');
+// set.add('Soccer');
+// set.add('Dog');
+// set.add('Coffee');
+// set.add('Chess');
 
 
 console.log("Lenght of buckets", set.length());
 set.add('30');
 console.log("Lenght of buckets", set.length());
-console.log("Has 'New York':", set.has('New York'))
+console.log("Has 'Classical':", set.has('Classical'))
 console.log("Has 'Nonexistent Item':", set.has('Nonexistent Item'))
 console.log("Lenght of buckets", set.length());
 set.remove('New York');
