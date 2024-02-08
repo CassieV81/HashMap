@@ -145,36 +145,34 @@ c.set('occupation', 'Software Engineer');
 c.set('hobby', 'Photography');
 c.set('favoriteFood', 'Pizza');
 c.set('language', 'JavaScript');
-// c.set('framework', 'React');
-// c.set('editor', 'Visual Studio Code');
-// c.set('operatingSystem', 'Windows');
-// c.set('country', 'USA');
-// c.set('favoriteColor', 'Blue');
-// c.set('car', 'Tesla Model 3');
-// c.set('music', 'Classical');
-// c.set('book', 'To Kill a Mockingbird');
-// c.set('movie', 'Inception');
-// c.set('sport', 'Soccer');
-// c.set('pet', 'Dog');
-// c.set('drink', 'Coffee');
-// c.set('game', 'Chess');
-// c.set('phone', 'iPhone');
-// c.set('laptop', 'MacBook Pro');
-// c.set('exercise', 'Running');
-// c.set('season', 'Fall');
-// c.set('tvShow', 'Stranger Things');
-// c.set('superhero', 'Spider-Man');
-// c.set('snack', 'Chocolate');
-// c.set('dessert', 'Ice Cream');
-// c.set('holiday', 'Christmas');
-// c.set('languageSpoken', 'English');
+c.set('framework', 'React');
+c.set('editor', 'Visual Studio Code');
+c.set('operatingSystem', 'Windows');
+c.set('country', 'USA');
+c.set('favoriteColor', 'Blue');
+c.set('car', 'Tesla Model 3');
+c.set('music', 'Classical');
+c.set('book', 'To Kill a Mockingbird');
+c.set('movie', 'Inception');
+c.set('sport', 'Soccer');
+c.set('pet', 'Dog');
+c.set('drink', 'Coffee');
+c.set('game', 'Chess');
+c.set('phone', 'iPhone');
+c.set('laptop', 'MacBook Pro');
+c.set('exercise', 'Running');
+c.set('season', 'Fall');
+c.set('tvShow', 'Stranger Things');
+c.set('superhero', 'Spider-Man');
+c.set('snack', 'Chocolate');
+c.set('dessert', 'Ice Cream');
+c.set('holiday', 'Christmas');
+c.set('languageSpoken', 'English');
 
 
-let n = c.get('name')
-console.log(n);
 c.set('name', 'Jane Doe');
-let m = c.get('name')
-console.log(m);
-// let l = c.entries();
-// console.log(l)
+let b = c.length();
+console.log(b)
+c.print()
+c.clear()
 c.print()
