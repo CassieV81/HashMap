@@ -24,7 +24,8 @@ class HashMap {
         const hashCode = this.hash(key);
         const obj = {key: key, value: value};
         const index = hashCode % this.buckets.length;
-        if (this.buckets[index]) {
+        if (this.buckets[index] !== null) {
+            if (this.has(key)) this.remove(key);
             return this.buckets[index].append(obj);
         }
         const bucket = new Bucket.LinkedList();
@@ -43,7 +44,6 @@ class HashMap {
     get(key) {
         let hashCode = this.hash(key);
         let index = hashCode % this.buckets.length;
-        console.log(`index: ${index}`)
         if (!this.buckets[index]) return null;
         if (this.buckets[index].size() > 0) {
             let list = this.buckets[index].head
@@ -170,8 +170,11 @@ c.set('language', 'JavaScript');
 // c.set('languageSpoken', 'English');
 
 
-// let n = c.remove('operatingSystem')
-// console.log(n);
-let l = c.entries();
-console.log(l)
+let n = c.get('name')
+console.log(n);
+c.set('name', 'Jane Doe');
+let m = c.get('name')
+console.log(m);
+// let l = c.entries();
+// console.log(l)
 c.print()
