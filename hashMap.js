@@ -4,7 +4,7 @@ let bucket = new Bucket.LinkedList();
 class HashMap {
 
     constructor() {
-        this.buckets = new Array(10);
+        this.buckets = new Array(10).fill(null);
     }
 
     hash(key) {
@@ -20,9 +20,7 @@ class HashMap {
         let hashCode = this.hash(key);
         let obj = {key: key, value: value};
         let index = hashCode % this.buckets.length;
-        console.log(`index: ${index}`)
         if (this.buckets[index]) {
-            console.log(this.buckets[index])
             return this.buckets[index].append(obj);
         }
         let bucket = new Bucket.LinkedList();
@@ -33,6 +31,7 @@ class HashMap {
     get(key) {
         let hashCode = this.hash(key);
         let index = hashCode % this.buckets.length;
+        console.log(`index: ${index}`)
         if (!this.buckets[index]) return null;
         if (this.buckets[index].size() > 0) {
             let list = this.buckets[index].head
@@ -41,53 +40,83 @@ class HashMap {
                 list = list.next;
             }
         }
+        return null
     }
 
     has(key) {
         let hashCode = this.hash(key);
-        let index = this.buckets.findIndex((key) => {
-            return key.key === hashCode;
-        })
-        if (index >= 0) return true;
+        let index = hashCode % this.buckets.length;
+        if (!this.buckets[index]) return false;
+        if (this.buckets[index].size() > 0) {
+            let list = this.buckets[index].head
+            while (list) {
+                if (list.value.key === key) return true;
+                list = list.next;
+            }
+        }
         return false;
     }
 
     remove(key) {
         let hashCode = this.hash(key);
-        let index = this.buckets.findIndex((key) => {
-            return key.key === hashCode;
-        })
-        if (index >= 0) {
-            this.buckets.splice(index, 1);
+        let index = hashCode % this.buckets.length;
+        if (!this.buckets[index]) return false;
+        if (this.buckets[index].size() > 1) {
+            let list = this.buckets[index].head;
+            let idx = 0;
+            while (list) {
+                if (list.value.key === key) {
+                    this.buckets[index].removeAt(idx);
+                    return true;
+                };
+                idx += 1;
+                list = list.next;
+            }
+        } else {
+            this.buckets[index] = null;
             return true;
         }
         return false;
     }
 
     length() {
-        return this.buckets.length;
+        let counter = 0;
+        this.buckets.map((element) => {
+            if (element !== null) {
+                counter += 1;
+            }
+        })
+        return counter;
     }
 
     clear() {
-        return this.buckets = [];
+        return this.buckets = new Array(10).fill(null);
     }
 
     keys() {
         let keys = [];
-        this.buckets.map((key) => {
-            let bucket = key.bucket.head;
-            keys.push(bucket.value.key);
-        })
-        return(keys);
+        for (let i = 0; i < this.buckets.length; i ++) {
+            if (this.buckets[i] === null) continue;
+            let list = this.buckets[i].head;
+            while (list) {
+                keys.push(list.value.key);
+                list = list.next;
+            }
+        }
+        return keys
     }
 
     entries() {
-        let keys = [];
-        this.buckets.map((key) => {
-            let bucket = key.bucket.head;
-            keys.push([bucket.value.key, bucket.value.value]);
-        })
-        return(keys);
+        let keyPairs = [];
+        for (let i = 0; i < this.buckets.length; i ++) {
+            if (this.buckets[i] === null) continue;
+            let list = this.buckets[i].head;
+            while (list) {
+                keyPairs.push([list.value.key, list.value.value]);
+                list = list.next;
+            }
+        }
+        return keyPairs
     }
 
     print() {
@@ -108,8 +137,8 @@ c.set('framework', 'React');
 c.set('editor', 'Visual Studio Code');
 c.set('operatingSystem', 'Windows');
 
+// let n = c.remove('operatingSystem')
+// console.log(n);
+let l = c.entries();
+console.log(l)
 c.print()
-
-let n = c.get('editor')
-console.log(n);
-// console.log(c.clear())
