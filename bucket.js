@@ -6,8 +6,6 @@ class Node {
         this.next = next;
     }
 }
-let node = new Node();
-console.log(node);
 
 class LinkedList {
     constructor() {
