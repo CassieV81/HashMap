@@ -32,10 +32,10 @@ class HashSet {
     }
 
     grow() {
-        const keyPairs = this.keys();
-        this.buckets = new Array(this.length() * 2).fill(null);
-        keyPairs.map((pairs) => {
-            this.add(pairs);
+        const entries = this.keys();
+        this.buckets = new Array(this.buckets.length * 2).fill(null);
+        entries.map((key) => {
+            this.add(key);
         })
     }
 
@@ -104,6 +104,7 @@ class HashSet {
 
     print() {
         console.log(this.buckets)
+        console.log(this.buckets.length)
     }
 
 }
@@ -146,10 +147,11 @@ set.print();
 set.clear();
 set.print();
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 15; i++) {
     set.add(`Item ${i}`);
 }
 set.print();
+set.remove('Item 13');
 
 console.log(set.keys())
 
